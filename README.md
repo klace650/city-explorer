@@ -21,3 +21,25 @@ Clone repo to local machine
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 --> Henry Funk - Lab 06 partner
+
+OCT 15
+
+Lab 06 / Repo Setup / Launch
+    Start : 1830
+    Expected Stop : 2000
+    Actual Stop :
+
+Lab 06 / Locations
+    Start : 
+    Expected Stop :
+    Actual Stop :
+
+Lab 06 / Weather
+    Start : 
+    Expected Stop :
+    Actual Stop :
+
+Lab 06 / Errors
+    Start : 
+    Expected Stop :
+    Actual Stop :
