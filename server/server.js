@@ -16,14 +16,17 @@ const app = express();
 app.use(cors());
 
 // Routes
-app.get('/', (request, response) => {
-    response.send('hello worl');
-});
+// app.get('/', (request, response) => {
+//     response.send('hello worl');
+// });
 
-add.get('/location', (request, response) =>{
-    let city 
-});
+// add.get('/location', (request, response) =>{
+//     let city 
+// });
 
 // Constructor to tailor our incoming raw data
 
 // Start our server!
+app.listen(PORT, ()=>{
+    console.log(`server is listening on port ${PORT}`)
+});
