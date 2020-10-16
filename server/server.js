@@ -15,18 +15,15 @@ const app = express();
 // Use CORS (cross origin resource sharing)
 app.use(cors());
 
-// Routes
-// app.get('/', (request, response) => {
-//     response.send('hello worl');
-// });
-
-// add.get('/location', (request, response) =>{
-//     let city 
-// });
+// HOME ROUTE
+// .get (name of route, callback function (request/response))
+app.get('/', (request, response) => {
+    response.send('hey world');
+});
 
 // Constructor to tailor our incoming raw data
 
 // Start our server!
 app.listen(PORT, ()=>{
-    console.log(`server is listening on port ${PORT}`)
+    console.log(`Server is listening on port ${PORT}`)
 });
