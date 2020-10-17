@@ -2,7 +2,7 @@
 
 const express = require('express');
 const cors = require('cors');
-const { response } = require('express');
+const {response } = require('express');
 const PORT = process.env.PORT || 3000;
 const app = express();
 require('dotenv').config();
@@ -15,7 +15,7 @@ app.get('/location', locationHandler);
 
 function locationHandler(request, response){
     let city = request.query.city;
-    let data = require('./data/location.json')[0];
+    let data = require('./server/data/location.json')[0];
     let location = new Location (data, city);
     response.send(location);
     console.log(city,data,location);
