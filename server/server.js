@@ -1,28 +1,32 @@
 'use strict'
-// Bring in our dependencies
+
 const express = require('express');
 const cors = require('cors');
 const { response } = require('express');
-require('dotenv').config();
-
-// Declare our port for our server to listen on
-
 const PORT = process.env.PORT || 3000;
-
-// start/instanciate Express
 const app = express();
-
-// Use CORS (cross origin resource sharing)
+require('dotenv').config();
 app.use(cors());
 
-// HOME ROUTE
-// .get (name of route, callback function (request/response))
-app.get('/', (request, response) => {
-    response.send('hey world');
-});
+// ROUTES : .get (name of route, callback function (request/response))
+app.get('/', (request, response) => {response.send('hey world');});
+app.get('/location', locationHandler);
 
+
+function locationHandler(request, response){
+    let city = request.query.city;
+    let data = require('./data/location.json')[0];
+    let location = new Location (data, city);
+    response.send(location);
+    console.log(city,data,location);
+}
 // Constructor to tailor our incoming raw data
-
+function Location (obj, query){
+    this.lat = obj.lat;
+    this.lon = obj.lon;
+    this.search_query = query;
+    this.location = obj.display.name;
+}
 // Start our server!
 app.listen(PORT, ()=>{
     console.log(`Server is listening on port ${PORT}`)
