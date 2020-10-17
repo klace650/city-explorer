@@ -25,7 +25,7 @@ function Location (obj, query){
     this.lat = obj.lat;
     this.lon = obj.lon;
     this.search_query = query;
-    this.location = obj.display.name;
+    this.location = obj.display_name;
 }
 // Start our server!
 app.listen(PORT, ()=>{
