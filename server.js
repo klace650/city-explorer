@@ -14,7 +14,6 @@ app.get('/location', locationHandler);
 app.get('/weather', weatherHandler);
 
 function weatherHandler(request, response){
-    let city = request.query.city;
     let weatherArray = [];
     let weatherData = require('./data/weather.json');
     weatherData.data.forEach(forecast => {
@@ -29,7 +28,6 @@ function locationHandler(request, response){
     let data = require('./data/location.json')[0];
     let location = new Location (data, city);
     response.send(location);
-    console.log(city,data,location);
 }
 // Constructor to tailor our incoming raw data
 function Location (obj, query){
@@ -39,9 +37,9 @@ function Location (obj, query){
     this.formatted_query = obj.display_name;
 }
 function Weather (obj){
-    this.forecast = obj.weatherForecast.description;
+    console.log('made it')
+    this.forecast = obj.weather.description;
     this.time = obj.datetime;
-
 };
 
 // Start our server!
