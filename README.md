@@ -23,16 +23,16 @@ Clone repo to local machine
 --> Henry Funk - Lab 06 partner
 
 OCT 15
-
 Lab 06 / Repo Setup / Launch
     Start : 1830
     Expected Stop : 2000
-    Actual Stop :
+    Actual Stop : 2130
 
+OCT 16
 Lab 06 / Locations
-    Start : 
-    Expected Stop :
-    Actual Stop :
+    Start : 1315
+    Expected Stop : 1400
+    Actual Stop : 1426
 
 Lab 06 / Weather
     Start : 
