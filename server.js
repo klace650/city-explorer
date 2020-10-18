@@ -8,9 +8,9 @@ const superagent = require('superagent');
 
 require('dotenv').config();
 
-app.use(cors());
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.use(cors());
 
 // ROUTES
 app.get('/location', locationHandler);
@@ -34,17 +34,13 @@ function locationHandler(request, response){
   let key = process.env.LOCATION_API_KEY;
 
   const URL = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${city}&format=json`;
-
   superagent.get(URL).then(data => {
-    let location = new Location (data, city);
-
-  })
-
-  // let data = require('./data/location.json')[0];
-  response.send(location);
+    let location = new Location (data.body[0], city);
+    response.status(200).json(location);
+  });
 }
 
-
+// -------------------------------------------
 // CONSTRUCTORS
 function Location (obj, query){
   this.latitude = obj.lat;
