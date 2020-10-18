@@ -27,11 +27,20 @@ function weatherHandler(request, response){
   });
   response.send(weatherArray);
 }
+// -----------------------------------------
 
 function locationHandler(request, response){
   let city = request.query.city;
-  let data = require('./data/location.json')[0];
-  let location = new Location (data, city);
+  let key = process.env.LOCATION_API_KEY;
+
+  const URL = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${city}&format=json`;
+
+  superagent.get(URL).then(data => {
+    let location = new Location (data, city);
+
+  })
+
+  // let data = require('./data/location.json')[0];
   response.send(location);
 }
 
