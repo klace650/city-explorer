@@ -9,7 +9,7 @@ This application is just the back end of an app that when a user inputs a city, 
 
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
-Clone repo to local machine 
+
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
@@ -33,7 +33,7 @@ Lab 06 / Locations / Weather
     Start : 1315
     Expected Stop : 1400
     Actual Stop : 1426
-    
+
 <!-- Lab 06 / Errors
     Start : 
     Expected Stop :
