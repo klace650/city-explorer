@@ -39,7 +39,12 @@ Lab 06 / Weather
     Expected Stop :
     Actual Stop :
 
-Lab 06 / Errors
+<!-- Lab 06 / Errors
     Start : 
     Expected Stop :
+    Actual Stop : -->
+
+Lab 07 / Data Formatting
+    Start : 1450
+    Expected Stop : 1600
     Actual Stop :
