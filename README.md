@@ -29,16 +29,11 @@ Lab 06 / Repo Setup / Launch
     Actual Stop : 2130
 
 OCT 16
-Lab 06 / Locations
+Lab 06 / Locations / Weather
     Start : 1315
     Expected Stop : 1400
     Actual Stop : 1426
-
-Lab 06 / Weather
-    Start : 
-    Expected Stop :
-    Actual Stop :
-
+    
 <!-- Lab 06 / Errors
     Start : 
     Expected Stop :
@@ -47,4 +42,4 @@ Lab 06 / Weather
 Lab 07 / Data Formatting
     Start : 1450
     Expected Stop : 1600
-    Actual Stop :
+    Actual Stop : 1720
