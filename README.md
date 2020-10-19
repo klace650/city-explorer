@@ -33,13 +33,15 @@ Lab 06 / Locations / Weather
     Start : 1315
     Expected Stop : 1400
     Actual Stop : 1426
-OCT 18
-Lab 06 / Errors
-    Start : 1728 
-    Expected Stop : 1800
-    Actual Stop :
 
+OCT 17
 Lab 07 / Data Formatting
     Start : 1450
     Expected Stop : 1600
     Actual Stop : 1720
+
+OCT 18
+Lab 06 / Errors
+    Start : 1728 
+    Expected Stop : 1800
+    Actual Stop : 1820
