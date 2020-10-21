@@ -23,42 +23,30 @@ app.get('/weather', weatherHandler);
 // HANDLERS
 
 function weatherHandler(request, response){
-  try{
-    let weatherArray = [];
-    let weatherData = require('./data/weather.json');
-    weatherData.data.forEach(forecast => {
-      let weatherForecast = new Weather (forecast);
-      weatherArray.push(weatherForecast);
-      response.send(weatherArray);
-    })
-  }
-  catch(error){
-    errorHandler();
-  }
+  let city = request.query.city;
+  let key = process.env.WEATHER_API_KEY;
+  const URL = ``;
+  superagent.get(URL).then(data => {
+    let forecast = new Weather(data.body[0],city);
+    response.status(200).json(forecast);
+  })
 }
-
 // ---------------------
 
 function locationHandler(request, response){
-  try {
-    let city = request.query.city;
-    let key = process.env.LOCATION_API_KEY;
-    const URL = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${city}&format=json`;
-    superagent.get(URL).then(data => {
-      let location = new Location (data.body[0], city);
-      response.status(200).json(location);
-    })
-  }
-  catch(error){
-    errorHandler();
-  }
+  let city = request.query.city;
+  let key = process.env.LOCATION_API_KEY;
+  const URL = ``;
+  superagent.get(URL).then(data => {
+    let location = new Location (data.body[0], city);
+    response.status(200).json(location);
+  })
 }
 
 // ----------------------
 
 function errorHandler(request, response){
   (response.status(404).send('Ya friggin broke it ya turkey'));
-  (response.status(500).send('that did not work bud'));
 }
 
 // -------------------------------------------
