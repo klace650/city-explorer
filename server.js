@@ -15,22 +15,26 @@ app.use(cors());
 // -----------------------------------------
 // ROUTES
 app.get('/location', locationHandler);
-// app.get('/weather', weatherHandler);
+app.get('/weather', weatherHandler);
 
 
 // -----------------------------------------
 // HANDLERS
 
-// function weatherHandler(request, response){
-//   let lat = request.query.latitude;
-//   let lon = request.query.longitude;
-//   let key = process.env.WEATHER_API_KEY;
-//   const URL = ``;
-//   superagent.get(URL).then(data => {
-//     let forecast = new Weather(data.body[0],);
-//     response.status(200).json(forecast);
-//   })
-// }
+function weatherHandler(request, response){
+  let lat = request.query.latitude;
+  let lon = request.query.longitude;
+  let key = process.env.WEATHER_API_KEY;
+  const URL = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${key}`;
+
+  superagent.get(URL).then(data => {
+    let forecast = data.body.data.map(forecast => {
+      new Weather (forecast);
+      return forecast;
+    });
+    response.status(200).json(forecast);
+  })
+}
 // ---------------------
 
 function locationHandler(request, response){
@@ -45,9 +49,6 @@ function locationHandler(request, response){
 
 // ----------------------
 
-// function errorHandler(request, response){
-//   (response.status(404).send('Ya friggin broke it ya turkey'));
-// }
 
 // -------------------------------------------
 // CONSTRUCTORS
@@ -59,6 +60,7 @@ function Location (obj, query){
 }
 function Weather (obj){
   this.forecast = obj.weather.description;
+  // STILL DOESN'T SEEM TO GRAB WEATHER DATA AND STICK IT TO THE PAGE//
   this.time = obj.datetime;
 }
 

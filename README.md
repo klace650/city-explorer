@@ -45,3 +45,9 @@ Lab 06 / Errors
     Start : 1728 
     Expected Stop : 1800
     Actual Stop : 1820
+
+OCT 19
+Lab 07 / Weather, Data Format, Errors, Trails
+    Start 1200
+    Expected 1400
+    Actual
