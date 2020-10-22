@@ -4,7 +4,6 @@
 // GLOBALS
 const express = require('express');
 const cors = require('cors');
-const {response } = require('express');
 const superagent = require('superagent');
 
 require('dotenv').config();
@@ -16,27 +15,28 @@ app.use(cors());
 // -----------------------------------------
 // ROUTES
 app.get('/location', locationHandler);
-app.get('/weather', weatherHandler);
+// app.get('/weather', weatherHandler);
 
 
 // -----------------------------------------
 // HANDLERS
 
-function weatherHandler(request, response){
-  let city = request.query.city;
-  let key = process.env.WEATHER_API_KEY;
-  const URL = ``;
-  superagent.get(URL).then(data => {
-    let forecast = new Weather(data.body[0],city);
-    response.status(200).json(forecast);
-  })
-}
+// function weatherHandler(request, response){
+//   let lat = request.query.latitude;
+//   let lon = request.query.longitude;
+//   let key = process.env.WEATHER_API_KEY;
+//   const URL = ``;
+//   superagent.get(URL).then(data => {
+//     let forecast = new Weather(data.body[0],);
+//     response.status(200).json(forecast);
+//   })
+// }
 // ---------------------
 
 function locationHandler(request, response){
   let city = request.query.city;
   let key = process.env.LOCATION_API_KEY;
-  const URL = ``;
+  const URL = `https://us1.locationiq.com/v1/search.php/?key=${key}&q=${city}&format=json`;
   superagent.get(URL).then(data => {
     let location = new Location (data.body[0], city);
     response.status(200).json(location);
@@ -45,9 +45,9 @@ function locationHandler(request, response){
 
 // ----------------------
 
-function errorHandler(request, response){
-  (response.status(404).send('Ya friggin broke it ya turkey'));
-}
+// function errorHandler(request, response){
+//   (response.status(404).send('Ya friggin broke it ya turkey'));
+// }
 
 // -------------------------------------------
 // CONSTRUCTORS
