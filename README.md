@@ -46,8 +46,26 @@ Lab 06 / Errors
     Expected Stop : 1800
     Actual Stop : 1820
 
+
+OCT 19
+Lab 07 / Weather, Data Format, Errors, Trails
+    Start 1200
+    Expected 1400
+    Actual 1400
+
+OCT 22
+LAB 08 / Database 
+    Start 1830
+    Expected 2130
+    Actual 2030 - yeehaw
+/ Sever / Deploy
+    Start 2030
+    Expected 2130
+    Actual 
+
 OCT 20
 Lab 07 / Weather / Data Format
     Start: 2030
     Expected: 2130
     Actual Stop: 
+
