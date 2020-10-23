@@ -101,6 +101,5 @@ function Location (obj, query){
 
 // -----------------------------------------
 // SERVER
-app.listen(PORT, ()=>{
-  console.log(`Server is listening on port ${PORT}`)
-});
+client.connect().then(()=> app.listen(PORT,()=>{
+  console.log(`SERVER NO LISTENING TO ${PORT}...chill`)}));
