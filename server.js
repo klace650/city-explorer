@@ -5,8 +5,8 @@
 const express = require('express');
 const cors = require('cors');
 const superagent = require('superagent');
-const pg = require('pg');
-const client = new pg.Client(process.env.DATABASE_URL);
+// const pg = require('pg');
+// const client = new pg.Client(process.env.DATABASE_URL);
 
 require('dotenv').config();
 
@@ -101,5 +101,8 @@ function Trail (obj){
 
 // -----------------------------------------
 // SERVER
-client.connect().then(()=> app.listen(PORT,()=>{
-  console.log(`SERVER NO LISTENING TO ${PORT}...chill`)}));
+// client.connect().then(()=> 
+
+app.listen(PORT,()=>{
+  console.log(`SERVER NOW LISTENING TO ${PORT}...chill`)});
+// );
