@@ -63,9 +63,20 @@ LAB 08 / Database
     Expected 2130
     Actual 
 
-OCT 20
+OCT 24
 Lab 07 / Weather / Data Format
     Start: 2030
     Expected: 2130
     Actual Stop: 
 
+Oct 25 
+Lab 08 / Weather / Errors / Trails
+    Start: 1315
+    Expected: 1500
+    Actual: 1835
+
+OCT 25
+Lab 09 Movies / Yelp
+    Start: 1836
+    Expected: 1930
+    Stop: 1930

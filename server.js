@@ -4,13 +4,13 @@
 const express = require('express');
 const cors = require('cors');
 const superagent = require('superagent');
-// const pg = require('pg');
+const pg = require('pg');
 // -----------------------------------------
 // ENVIROMENT
 require('dotenv').config();
 // -----------------------------------------
 // POSTGRES
-// const client = new pg.Client(process.env.DATABASE_URL);
+const client = new pg.Client(process.env.DATABASE_URL);
 // -----------------------------------------
 // APPLICATION
 const app = express();
@@ -22,6 +22,7 @@ app.use(cors());
 app.get('/location', locationHandler);
 app.get('/weather', weatherHandler);
 app.get('/trails', trailHander);
+app.get('/yelp', movieHandler);
 app.use('*', notFoundler);
 
 // -----------------------------------------
@@ -62,8 +63,8 @@ function weatherHandler(request, response){
       response.send(forecastArr);
     })
     .catch(error => {
-      response.status(500).send('Server Issue @ Weather')
-    })
+      response.status(500).send('Server Issue @ Weather');
+    });
 }
 
 function trailHander (request, response){
@@ -86,6 +87,22 @@ function trailHander (request, response){
     });
 }
 
+function movieHandler (request, response){
+  let searched = request.query.search_query;
+  let key = process.env.MOVIE_API;
+  const URL = `https://api.themoviedb.org/3/authentication/token/new?api_key=${key}`;
+
+  superagent.get(URL)
+    .then(data =>{
+      let search = data.body.data.map(data => {
+        return new Movie (data);
+      });
+      response.send(searched);
+    })
+    .catch(error => {
+      response.status(500).send('Sever Issue @ Movies');
+    })
+}
 
 // -------------------------------------------
 // CONSTRUCTORS
@@ -110,6 +127,10 @@ function Trail (obj){
   this.conditions = obj.conditions;
   this.condition_date = obj.conditionDate;
   this.condition_time = obj.conditionTime;
+}
+function Movie(obj){
+  this.title = obj.title;
+  this.overview = obj.overview;
 }
 
 // -----------------------------------------
