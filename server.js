@@ -20,7 +20,7 @@ app.use(cors());
 // -----------------------------------------
 // ROUTES
 app.get('/location', locationHandler);
-// app.get('/weather', weatherHandler);
+app.get('/weather', weatherHandler);
 // app.get('/trails', trailHander);
 app.use('*', notFoundler);
 
@@ -43,29 +43,23 @@ function locationHandler(request, response){
     })
 }
 
-// function weatherHandler (request, response){
-//   const URL = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${key}`;
-// };
-// superagent.get(URL)
-//   .then( data => {
-//     let forecast = data.body.data.map(day => new Weather)
-//   })
+function weatherHandler(request, response){
+  let lat = request.query.latitude;
+  let lon = request.query.longitude;
+  let key = process.env.WEATHER_API_KEY;
+  const URL = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${key}`;
+  superagent.get(URL)
+    .then(data => {
+      let forecastArr = data.body.data.map(day => {
+        return new Weather(day);
+      });
+      response.send(forecastArr);
+    })
+    .catch(error => {
+      response.status(500).send('Server Issue @ Weather')
+    })
+}
 
-// function weatherHandler(request, response){
-//   let lat = request.query.latitude;
-//   let lon = request.query.longitude;
-//   let key = process.env.WEATHER_API_KEY;
-
-//   superagent.get(URL).then(data => {
-//     let forecast = data.body.data.map(forecast => {
-//       new Weather (forecast);
-//       return forecast;
-//       // Line below logs correct data also - still isn't making it to the page.
-//       // console.log(forecast.weather.description);
-//     })
-//     response.status(200).send(forecast);
-//   })
-// }
 // function trailHander (request, response){
 //   let lat = request.query.latitude;
 //   let lon = request.query.longitude;
