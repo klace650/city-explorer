@@ -22,15 +22,13 @@ app.use(cors());
 app.get('/location', locationHandler);
 app.get('/weather', weatherHandler);
 app.get('/trails', trailHander);
-app.get('/yelp', movieHandler);
+// app.get('/movie', movieHandler);
 app.use('*', notFoundler);
 
 // -----------------------------------------
 // HANDLERS
 function notFoundler (request, response){
   response.status(404).send('Client Error?');
-  // Do I need this?
-  console.log(request);
 }
 
 function locationHandler(request, response){
@@ -72,37 +70,36 @@ function trailHander (request, response){
   let lon = request.query.longitude;
   let key = process.env.TRAIL_API_KEY;
   const URL= `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=50&key=${key}`;
-  // https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200955913-600f2c90e9a4c7c5e293cbff819aff3e
 
   superagent.get(URL)
     .then(data =>{
       let trailArr = data.body.trail.map(data => {
         return new Trail(data);
       });
-      console.log(trailArr);
       response.send(trailArr);
     })
     .catch(error => {
       response.status(500).send('Server Issue @ Trails');
     });
+  console.log(response);
 }
 
-function movieHandler (request, response){
-  let searched = request.query.search_query;
-  let key = process.env.MOVIE_API;
-  const URL = `https://api.themoviedb.org/3/authentication/token/new?api_key=${key}`;
+// function movieHandler (request, response){
+//   let searched = request.query.search_query;
+//   let key = process.env.MOVIE_API;
+//   const URL = `https://api.themoviedb.org/3/authentication/token/new?api_key=${key}`;
 
-  superagent.get(URL)
-    .then(data =>{
-      let search = data.body.data.map(data => {
-        return new Movie (data);
-      });
-      response.send(searched);
-    })
-    .catch(error => {
-      response.status(500).send('Sever Issue @ Movies');
-    })
-}
+//   superagent.get(URL)
+//     .then(data =>{
+//       let search = data.body.data.map(data => {
+//         return new Movie (data);
+//       });
+//       response.send(searched);
+//     })
+//     .catch(error => {
+//       response.status(500).send('Sever Issue @ Movies');
+//     })
+// }
 
 // -------------------------------------------
 // CONSTRUCTORS
@@ -128,10 +125,10 @@ function Trail (obj){
   this.condition_date = obj.conditionDate;
   this.condition_time = obj.conditionTime;
 }
-function Movie(obj){
-  this.title = obj.title;
-  this.overview = obj.overview;
-}
+// function Movie(obj){
+//   this.title = obj.title;
+//   this.overview = obj.overview;
+// }
 
 // -----------------------------------------
 // SERVER
